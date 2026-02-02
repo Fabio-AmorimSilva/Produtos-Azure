@@ -5,4 +5,24 @@
     Layout = "_Layout";
 }
 
+<a asp-action="Create" class="btn btn-primary">Register Product</a>
+
 <h2>--- Products Index ---</h2>
+
+<table class="table table-striped">
+    <thead>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Category</th>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <th></th>
+                <td>@product.Name</td>
+                <td>@product.ProductCategory</td>
+            </tr>
+        }
+    </tbody>
+</table>

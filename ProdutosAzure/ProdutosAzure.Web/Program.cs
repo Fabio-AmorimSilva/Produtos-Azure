@@ -1,3 +1,6 @@
+using ProdutosAzure.Application;
+using ProdutosAzure.Infrastructure;
+
 namespace ProdutosAzure.Web;
 
 public class Program
@@ -5,6 +8,11 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder
+            .Services
+            .AddApplication()
+            .AddInfrastructure(builder.Configuration);
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
