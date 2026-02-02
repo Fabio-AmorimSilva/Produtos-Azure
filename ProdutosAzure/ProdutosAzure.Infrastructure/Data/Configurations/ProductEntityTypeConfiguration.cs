@@ -32,6 +32,6 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
 
         builder
             .Property(p => p.UpdatedAt)
-            .IsRequired();
+            .IsRequired(false);
     }
 }

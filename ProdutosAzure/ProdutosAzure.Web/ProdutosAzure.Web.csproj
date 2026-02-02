@@ -23,6 +23,7 @@
     <ItemGroup>
       <ProjectReference Include="..\ProdutosAzure.Application\ProdutosAzure.Application.csproj" />
       <ProjectReference Include="..\ProdutosAzure.Domain\ProdutosAzure.Domain.csproj" />
+      <ProjectReference Include="..\ProdutosAzure.Infrastructure\ProdutosAzure.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
