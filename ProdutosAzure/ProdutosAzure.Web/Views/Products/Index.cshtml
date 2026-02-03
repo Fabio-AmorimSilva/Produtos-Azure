@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProdutosAzure.Application.Dtos.Products.ListProductDto>
+﻿@model IEnumerable<ProdutosAzure.Application.Dtos.Products.ProductDto>
 
 @{
     ViewBag.Title = "Products";
@@ -22,6 +22,9 @@
                 <th></th>
                 <td>@product.Name</td>
                 <td>@product.ProductCategory</td>
+                <td>
+                    <a asp-controller="Products" asp-action="Update" asp-route-id="@product.Id">Edit</a>
+                </td>
             </tr>
         }
     </tbody>
