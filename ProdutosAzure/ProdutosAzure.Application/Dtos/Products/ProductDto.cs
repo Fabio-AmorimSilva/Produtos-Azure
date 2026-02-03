@@ -1,8 +1,8 @@
 ﻿namespace ProdutosAzure.Application.Dtos.Products;
 
-public record UpdateProductDto
+public record ProductDto
 {
-    public Guid ProductId { get; init; }
+    public Guid Id { get; set; }
     public string Name { get; init; } = string.Empty;
     public ProductCategory ProductCategory { get; init; }
 }

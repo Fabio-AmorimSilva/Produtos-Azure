@@ -2,17 +2,25 @@
 
 public class ProductService(IProductAzureDbContext context) : IProductService
 {
-    public async Task<IEnumerable<ListProductDto>> ListProductsAsync()
+    public async Task<IEnumerable<ProductDto>> ListProductsAsync()
     {
         var products = await context.Products
-            .Select(p => new ListProductDto
+            .Select(p => new ProductDto
             {
+                Id = p.Id,
                 Name = p.Name,
                 ProductCategory = p.ProductCategory
             })
             .ToListAsync();
 
         return products;
+    }
+
+    public async Task<Product?> GetProductByIdAsync(Guid productId)
+    {
+        var product = await context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+
+        return product;
     }
 
     public async Task<Guid> CreateAsync(CreateProductDto dto)
