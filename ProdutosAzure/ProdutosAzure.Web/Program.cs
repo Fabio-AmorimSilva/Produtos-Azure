@@ -1,6 +1,3 @@
-using ProdutosAzure.Application;
-using ProdutosAzure.Infrastructure;
-
 namespace ProdutosAzure.Web;
 
 public class Program
@@ -18,6 +15,12 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ProductAzureDbContext>();
+            db.Database.Migrate();
+        }
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
