@@ -18,13 +18,13 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Restore
-      run: dotnet restore
+      run: dotnet restore ProdutosAzure.sln
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build ProdutosAzure.sln --configuration Release --no-restore
 
     - name: Publish
-      run: dotnet publish -c Release -o ./publish
+      run: dotnet publish ProdutosAzure.Web.csproj -c Release -o ./publish
 
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v3
