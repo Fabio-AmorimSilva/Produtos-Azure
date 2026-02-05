@@ -24,7 +24,7 @@ jobs:
       run: dotnet build ProdutosAzure/ProdutosAzure.sln --configuration Release --no-restore
 
     - name: Publish
-      run: dotnet publish ProdutosAzure/ProdutosAzure.Web.csproj -c Release -o ./publish
+      run: dotnet publish ProdutosAzure/ProdutosAzure.Web/ProdutosAzure.Web.csproj -c Release -o ./publish
 
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v3
