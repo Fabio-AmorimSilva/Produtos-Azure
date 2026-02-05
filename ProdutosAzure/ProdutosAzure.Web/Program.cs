@@ -10,6 +10,9 @@ public class Program
             .Services
             .AddApplication()
             .AddInfrastructure(builder.Configuration);
+        
+        var testConn = builder.Configuration.GetConnectionString("DefaultConnection");
+        Console.WriteLine("DefaultConnection is null? " + (testConn == null));
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
