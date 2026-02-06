@@ -24,11 +24,12 @@
                 <td>@product.ProductCategory</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_@product.Id">
-                        Detalhes
+                        Details
                     </button>
-                </td>
-                <td>
                     <a asp-controller="Products" asp-action="Update" asp-route-id="@product.Id">Edit</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete_@product.Id">
+                        Delete
+                    </button>
                 </td>
             </tr>
             <div class="modal fade" id="Modal_@product.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,11 +49,11 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="Remove_@product.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="Delete_@product.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Deseja remover o usuário?</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product?</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
