@@ -23,11 +23,11 @@
                 <td>@product.Name</td>
                 <td>@product.ProductCategory</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_@product.Id">
+                    <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#Modal_@product.Id">
                         Details
                     </button>
-                    <a asp-controller="Products" asp-action="Update" asp-route-id="@product.Id">Edit</a>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete_@product.Id">
+                    <a class="btn btn-primary m-1" asp-controller="Products" asp-action="Update" asp-route-id="@product.Id">Edit</a>
+                    <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#Delete_@product.Id">
                         Delete
                     </button>
                 </td>
@@ -36,7 +36,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Informações</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Information</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
