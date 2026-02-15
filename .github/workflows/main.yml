@@ -1,4 +1,4 @@
-name: Build and deploy ASP.NET Core MVC app
+name: Build, Test and deploy ASP.NET Core MVC app
 
 on:
   push:
@@ -22,6 +22,12 @@ jobs:
 
     - name: Build
       run: dotnet build ProdutosAzure/ProdutosAzure.sln --configuration Release --no-restore
+      
+    - name: Run Unit Tests
+      run: dotnet test ProdutosAzure/ProdutosAzure.sln --configuration Release --no-build --verbosity normal
+      
+    - name: Run Teste With Coverage
+      run: dotnet test ProdutosAzure/ProdutosAzure.sln /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
     - name: Publish
       run: dotnet publish ProdutosAzure/ProdutosAzure.Web/ProdutosAzure.Web.csproj -c Release -o ./publish
