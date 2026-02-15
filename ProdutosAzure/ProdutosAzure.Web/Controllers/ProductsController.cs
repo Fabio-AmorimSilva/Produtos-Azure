@@ -33,7 +33,7 @@ public class ProductsController(IProductService productService) : Controller
         {
             ProductId = product?.Id ?? Guid.Empty,
             Name = product?.Name ?? string.Empty,
-            ProductCategory = product!.ProductCategory
+            ProductCategory = product!.Category
         };
 
         return View(dto);

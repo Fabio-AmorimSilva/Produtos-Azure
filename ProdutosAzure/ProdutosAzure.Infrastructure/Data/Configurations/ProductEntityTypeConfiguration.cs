@@ -23,7 +23,7 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired();
         
         builder
-            .Property(p => p.ProductCategory)
+            .Property(p => p.Category)
             .IsRequired();
         
         builder

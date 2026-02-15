@@ -9,7 +9,7 @@ public class ProductService(IProductAzureDbContext context) : IProductService
             {
                 Id = p.Id,
                 Name = p.Name,
-                ProductCategory = p.ProductCategory
+                ProductCategory = p.Category
             })
             .ToListAsync();
 
@@ -27,7 +27,7 @@ public class ProductService(IProductAzureDbContext context) : IProductService
     {
         var product = new Product(
             name: dto.Name,
-            productCategory: dto.ProductCategory
+            category: dto.ProductCategory
         );
 
         await context.Products.AddAsync(product);

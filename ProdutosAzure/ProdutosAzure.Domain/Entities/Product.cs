@@ -6,7 +6,7 @@ public class Product
     
     public Guid Id { get; private set; }
     public string Name { get; private set; }
-    public ProductCategory ProductCategory { get; private set; }
+    public ProductCategory Category { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
@@ -16,15 +16,15 @@ public class Product
 
     public Product(
         string name,
-        ProductCategory productCategory
+        ProductCategory category
     )
     {
-        Guard.IsNotNullOrWhiteSpace(name);
+        Guard.IsNotWhiteSpace(name);
         Guard.IsLessThanOrEqualTo(name.Length, NameMaxLength, nameof(name));
         
         Id = Guid.NewGuid();
         Name = name;
-        ProductCategory = productCategory;
+        Category = category;
         CreatedAt = DateTime.Now;
     }
 
@@ -34,9 +34,10 @@ public class Product
     )
     {
         Guard.IsNotNullOrWhiteSpace(name);
+        Guard.IsLessThanOrEqualTo(name.Length, NameMaxLength, nameof(name));
         
         Name = name;
-        ProductCategory = productCategory;
+        Category = productCategory;
         UpdatedAt = DateTime.Now;
     }
 }
