@@ -9,27 +9,27 @@ public class Program
         builder
             .Services
             .AddApplication()
-            .AddInfrastructure(builder.Configuration);
+            .AddInfrastructure(builder.Configuration)
+            .AddHealthChecks();
         
-        var testConn = builder.Configuration.GetConnectionString("DefaultConnection");
-        Console.WriteLine("DefaultConnection is null? " + (testConn == null));
-
-        // Add services to the container.
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
+        
+        app.MapHealthChecks("/health");
 
-        using (var scope = app.Services.CreateScope())
+        if (app.Environment.IsProduction())
         {
-            var db = scope.ServiceProvider.GetRequiredService<ProductAzureDbContext>();
-            db.Database.Migrate();
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ProductAzureDbContext>();
+                db.Database.Migrate();
+            }
         }
-
-        // Configure the HTTP request pipeline.
+        
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
